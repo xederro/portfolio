@@ -1,0 +1,19 @@
+Options +FollowSymlinks
+Options -Indexes
+<FilesMatch "(?i)((\.tpl|\.twig|\.ini|\.log|(?<!robots)\.txt))">
+ Require all denied
+</FilesMatch>
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+  Header set Cache-Control "max-age=86400, public"
+</FilesMatch>
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{DOCUMENT_ROOT}/$1 -f
+RewriteRule ^[^/]+/([^.]+\.(?:js|css|jpe?g|png|gif))$ /$1 [L,R=301,NC]
+RewriteBase /
+RewriteRule ^Portfolio$ index.php [L]
+RewriteRule ^Weather$ index.php?page=weather [L]
+RewriteRule ^Chat$ index.php?page=chat [L]
+RewriteRule ^Trends$ index.php?page=trends [L]

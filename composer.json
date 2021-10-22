@@ -1,0 +1,33 @@
+{
+    "name": "xederro/portfolio",
+    "type": "project",
+    "authors": [
+        {
+            "name": "xederro",
+            "email": "xederro@gmail.com"
+        }
+    ],
+    "require": {
+        "laminas/laminas-json": "^3.0",
+        "laminas/laminas-http": "^2.6",
+        "laminas/laminas-stdlib": "^3.1",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "grpc/grpc": "^1.39",
+        "google/protobuf": "^3.17"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Google\\": "vendor/x-fran/g-trends/src/Google"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GoogleTest\\": "vendor/x-fran/g-trends/test/GoogleTest"
+        }
+    }
+}

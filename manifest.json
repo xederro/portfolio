@@ -1,0 +1,22 @@
+{
+  "short_name": "Portfolio",
+  "name": "Dawid Jabłoński - Portfolio",
+   "icons": [
+     {
+       "src": "/public/img/icon-192.png",
+       "type": "image/png",
+       "sizes": "192x192"
+     },
+     {
+       "src": "/public/img/icon-512.png",
+       "type": "image/png",
+       "sizes": "512x512"
+     }
+   ],
+  "start_url": "/Portfolio",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#212121",
+  "background_color": "#212121",
+  "prefer_related_applications": true
+}

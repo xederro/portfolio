@@ -1,0 +1,15 @@
+# IDE Project files
+/.idea
+
+#config files
+/config/config.php
+
+#composer
+/vendor
+
+#bulks
+/src/css/bulk
+/src/js/bulk
+
+#npm
+/node_modules
