@@ -1,8 +1,10 @@
-var ctx = document.getElementsByTagName('canvas')
-var tempChart
-var presChart
-var humChart
-var lightChart
+var ctx = document.getElementsByTagName('canvas');
+var tempChart;
+var presChart;
+var humChart;
+var lightChart;
+
+var site = "/?page=weather&data=";
 
 var sortBy = "Hour";
 
@@ -11,21 +13,21 @@ function change(text){
     document.getElementById("sort").innerHTML = text;
     sortBy = text;
 
-    $.getJSON('/?page=weather&data=' + sortBy.toLowerCase(), function (data) {
+    $.getJSON(site + sortBy.toLowerCase(), function (data) {
 
       var timestamps = Array.from(data, x => x['time'])
 
       tempChart.data.labels = timestamps;
-      tempChart.data.datasets.data = Array.from(data, x => x['temperature']);
+      tempChart.data.datasets[0].data = Array.from(data, x => x['temperature']);
 
       presChart.data.labels = timestamps;
-      presChart.data.datasets.data = Array.from(data, x => x['pressure']);
+      presChart.data.datasets[0].data = Array.from(data, x => x['pressure']);
 
       humChart.data.labels = timestamps;
-      humChart.data.datasets.data = Array.from(data, x => x['humidity']);
+      humChart.data.datasets[0].data = Array.from(data, x => x['humidity']);
 
       lightChart.data.labels = timestamps;
-      lightChart.data.datasets.data = Array.from(data, x => x['light']);
+      lightChart.data.datasets[0].data = Array.from(data, x => x['light']);
 
       tempChart.update();
       presChart.update();
@@ -42,7 +44,7 @@ function graphInit() {
     dataUpdate(true)
   }, 60000);
 
-  $.getJSON('/?page=weather&data=' + sortBy.toLowerCase(), function (data) {
+  $.getJSON(site + sortBy.toLowerCase(), function (data) {
 
     var timestamps = Array.from(data, x => x['time'])
 
@@ -225,7 +227,7 @@ function graphInit() {
 }
 
 function dataUpdate(updateChart){
-  $.getJSON('/?page=weather&data=data', function (data) {
+  $.getJSON(site + 'data', function (data) {
 
     document.getElementById('time').innerHTML = data[0]['time']
     document.getElementById('temperature').innerHTML = data[0]['temperature']
