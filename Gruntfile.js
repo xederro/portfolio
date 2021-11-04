@@ -21,6 +21,10 @@ module.exports = function (grunt) {
                 src:["./src/js/chat.js"],
                 dest: './src/js/bulk/chat.bulk.js'
             },
+            geo: {
+                src:["./src/js/geo.js"],
+                dest: './src/js/bulk/geo.bulk.js'
+            },
             trends: {
                 src:[""],
                 dest: './src/js/bulk/trends.bulk.js'
@@ -71,6 +75,7 @@ module.exports = function (grunt) {
                     './public/js/weather.min.js': './src/js/bulk/weather.bulk.js',
                     './public/js/chat.min.js': './src/js/bulk/chat.bulk.js',
                     './public/js/trends.min.js': './src/js/bulk/trends.bulk.js',
+                    './public/js/geo.min.js': './src/js/bulk/geo.bulk.js',
                 }
             }
         }

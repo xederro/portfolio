@@ -56,4 +56,4 @@
 
 
 
-<script src="public/js/portfolio.min.js"></script>
+<script src="/public/js/portfolio.min.js"></script>

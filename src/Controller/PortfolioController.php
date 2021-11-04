@@ -22,7 +22,9 @@ class PortfolioController
             default => self::PAGE,
             'weather' => "weather",
             'chat' => "chat",
-            'trends' => "trends"
+            'geo' => "geo",
+            'trends' => "trends",
+            'error' => "error"
         };
 
         if(!is_null($params->getParam('data'))){

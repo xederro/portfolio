@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-    <script src="public/js/weather.min.js"></script>
+    <script src="/public/js/weather.min.js"></script>
     <script>
       graphInit();
       dataUpdate(false);

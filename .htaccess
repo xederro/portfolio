@@ -1,11 +1,20 @@
 Options +FollowSymlinks
-Options -Indexes
+
+Options All -Indexes
+
 <FilesMatch "(?i)((\.tpl|\.twig|\.ini|\.log|(?<!robots)\.txt))">
  Require all denied
 </FilesMatch>
+
 <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
   Header set Cache-Control "max-age=86400, public"
 </FilesMatch>
+
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -17,3 +26,11 @@ RewriteRule ^Portfolio$ index.php [L]
 RewriteRule ^Weather$ index.php?page=weather [L]
 RewriteRule ^Chat$ index.php?page=chat [L]
 RewriteRule ^Trends$ index.php?page=trends [L]
+RewriteRule ^Geo$ index.php?page=geo [L]
+RewriteRule ^Geo/(.*)$ index.php?page=geo&ip=$1 [QSA]
+
+ErrorDocument 400 index.php?page=error&error=400
+ErrorDocument 401 index.php?page=error&error=401
+ErrorDocument 403 index.php?page=error&error=403
+ErrorDocument 404 index.php?page=error&error=404
+ErrorDocument 500 index.php?page=error&error=500
