@@ -22,4 +22,4 @@ Portfolio and projects in it ware build with:
    - Weather measured with Raspberry Pi
    - Simple Chat
    - Latest trends in USA
-   - IP address localisation
+   - IP address localization
