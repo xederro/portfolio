@@ -85,7 +85,7 @@ const projects = [
         projectName: 'Geo localisation',
         lang: 'PHP',
         langColor: '#4F5D95',
-        description: 'Shows localisation of your IP address',
+        description: 'Shows localization of your IP address',
         link: 'Geo',
         technologies: [
             {
