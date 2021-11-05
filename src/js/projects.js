@@ -80,5 +80,30 @@ const projects = [
                 fontColor: ""
             }
         ]
+    },
+    {
+        projectName: 'Geo localisation',
+        lang: 'PHP',
+        langColor: '#4F5D95',
+        description: 'Shows localisation of your IP address',
+        link: 'Geo',
+        technologies: [
+            {
+                name: 'PHP',
+                color: '#4F5D95',
+                fontColor: ""
+
+            },
+            {
+                name: 'Bootstrap',
+                color: '#563d7c',
+                fontColor: ""
+            },
+            {
+                name: 'JavaScript',
+                color: '#f1e05a',
+                fontColor: "#000000"
+            }
+        ]
     }
   ]
