@@ -26,22 +26,55 @@
     <link href="/public/css/tidy.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<body >
+<body class="d-flex flex-column min-vh-100">
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="Portfolio">Dawid Jabłoński</a>
+            <a class="navbar-brand" href="/Portfolio">Dawid Jabłoński</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link <?php if($page == "portfolio")echo 'active'?>" href="/Portfolio">Portfolio</a>
-                    <a class="nav-link <?php if($page == "weather")echo 'active'?>" href="/Weather">Weather</a>
-                    <a class="nav-link <?php if($page == "chat")echo 'active'?>" href="/Chat">Chat</a>
-                    <a class="nav-link <?php if($page == "trends")echo 'active'?>" href="/Trends">Trends</a>
-                    <a class="nav-link <?php if($page == "geo")echo 'active'?>" href="/Geo">Geo</a>
-                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "portfolio")echo 'active'?>" href="/Portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "weather")echo 'active'?>" href="/Weather">Weather</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "chat")echo 'active'?>" href="/Chat">Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "trends")echo 'active'?>" href="/Trends">Trends</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "geo")echo 'active'?>" href="/Geo">Geo</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <?php
+                        if(empty($params['session']['user']['id'])){
+                            echo "<li class='nav-item'><a class='nav-link ";
+                            if($page == 'authLogin') echo 'active';
+                            echo "' href='/Login'>Login</a></li><li class='nav-item'><a class='nav-link ";
+                            if($page == 'authRegister') echo 'active';
+                            echo "' href='/Register'>Register</a></li>";
+                        }
+                        else{
+                            echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle dropstart" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
+                            echo $params['session']['user']['name'];
+                            echo '</a><ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item ';
+                            if($page == 'authUpdate') echo 'active';
+                            echo '" href="/Edit">Edit</a></li><li><a class="dropdown-item ';
+                            if($page == 'authDelete') echo 'active';
+                            echo '" href="/Delete">Delete</a></li>';
+                            echo '<li><a class="dropdown-item" href="/Logout">Logout</a></li></ul></li>';
+                        }
+                    ?>
+                </ul>
+
             </div>
         </div>
     </nav>
@@ -49,7 +82,7 @@
 
 <?php require_once("templates/pages/$page.php"); ?>
 
-<footer class="bg-dark navbar navbar-dark">
+<footer class="bg-dark navbar navbar-dark mt-auto">
     <div class="container-fluid">
         <p class="w-100 text-center">&copy;<span id="year">20XX</span> - Portfolio -  Dawid Jabłoński</p>
     </div>

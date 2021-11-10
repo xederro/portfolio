@@ -1,5 +1,5 @@
 <div class="container-sm">
-    <div class="card w-100">
+    <div class="card">
         <div class="card-header">
             Chatbox
         </div>
@@ -11,7 +11,7 @@
             <form action="javascript:sendMsg();">
                 <div class="mb-3">
                     <label for="nick" class="form-label">Nick:</label>
-                    <input type="text" class="form-control" id="nick" required>
+                    <input type="text" class="form-control" id="nick" required value="<?php echo $params['session']['user']['name'] ?? '';?>">
                 </div>
                 <div class="mb-3">
                     <label for="message" class="form-label">Message:</label>
@@ -23,6 +23,7 @@
     </div>
 </div>
 
+<script src="/config/firestore.js"></script>
 <script src="/public/js/firebase-app.js"></script>
 <script src="/public/js/firebase-analytics.js"></script>
 <script src="/public/js/firebase-auth.js"></script>

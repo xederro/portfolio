@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                 dest: './src/js/bulk/portfolio.bulk.js'
             },
             weather: {
-                src:["./src/js/chart.js", "./src/js/jquery.min.js","./src/js/weather.js"],
+                src:["./src/js/chart.js","./src/js/weather.js"],
                 dest: './src/js/bulk/weather.bulk.js'
             },
             chat: {
@@ -28,6 +28,22 @@ module.exports = function (grunt) {
             trends: {
                 src:[""],
                 dest: './src/js/bulk/trends.bulk.js'
+            },
+            authDelete: {
+                src:["./src/js/delete.js"],
+                dest: './src/js/bulk/delete.bulk.js'
+            },
+            authLogin: {
+                src:["./src/js/login.js"],
+                dest: './src/js/bulk/login.bulk.js'
+            },
+            authRegister: {
+                src:["./src/js/register.js"],
+                dest: './src/js/bulk/register.bulk.js'
+            },
+            authUpdate: {
+                src:["./src/js/update.js"],
+                dest: './src/js/bulk/update.bulk.js'
             }
         },
         purgecss: {
@@ -40,6 +56,11 @@ module.exports = function (grunt) {
                         'https://localhost/portfolio/?page=trends',
                         'https://localhost/portfolio/?page=weather',
                         'https://localhost/portfolio/?page=chat',
+                        'https://localhost/portfolio/?page=geo',
+                        'https://localhost/portfolio/?page=authUpdate',
+                        'https://localhost/portfolio/?page=authRegister',
+                        'https://localhost/portfolio/?page=authLogin',
+                        'https://localhost/portfolio/?page=authDelete',
                         './src/js/*.js'
                     ],
                     safelist: [
@@ -76,6 +97,10 @@ module.exports = function (grunt) {
                     './public/js/chat.min.js': './src/js/bulk/chat.bulk.js',
                     './public/js/trends.min.js': './src/js/bulk/trends.bulk.js',
                     './public/js/geo.min.js': './src/js/bulk/geo.bulk.js',
+                    './public/js/delete.min.js': './src/js/bulk/delete.bulk.js',
+                    './public/js/login.min.js': './src/js/bulk/login.bulk.js',
+                    './public/js/register.min.js': './src/js/bulk/register.bulk.js',
+                    './public/js/update.min.js': './src/js/bulk/update.bulk.js',
                 }
             }
         }

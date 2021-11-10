@@ -14,7 +14,7 @@ try {
     $trends = $gt->getDailySearchTrends()['default']['trendingSearchesDays'];
     foreach ($trends as $trend){
         echo (
-            '<div class="container-fluid"> <h1>
+            '<div class="container-fluid">
               <h2>'
             .$trend['formattedDate']
             .'</h2>

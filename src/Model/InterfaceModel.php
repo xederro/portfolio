@@ -8,5 +8,5 @@ use src\Utils\Request;
 
 interface InterfaceModel
 {
-    public function getData(Request $request): array;
+    public function read(Request $request): array;
 }

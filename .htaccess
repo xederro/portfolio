@@ -28,6 +28,12 @@ RewriteRule ^Chat$ index.php?page=chat [L]
 RewriteRule ^Trends$ index.php?page=trends [L]
 RewriteRule ^Geo$ index.php?page=geo [L]
 RewriteRule ^Geo/(.*)$ index.php?page=geo&ip=$1 [QSA]
+RewriteRule ^Login$ index.php?page=authLogin [L]
+RewriteRule ^Register$ index.php?page=authRegister [L]
+RewriteRule ^Delete$ index.php?page=authDelete [L]
+RewriteRule ^Edit$ index.php?page=authUpdate [L]
+RewriteRule ^Logout$ index.php?page=authLogout [L]
+
 
 ErrorDocument 400 index.php?page=error&error=400
 ErrorDocument 401 index.php?page=error&error=401

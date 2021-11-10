@@ -19,6 +19,7 @@ Portfolio and projects in it ware build with:
 # Features
 
    - MVC design
+   - Auth system
    - Weather measured with Raspberry Pi
    - Simple Chat
    - Latest trends in USA

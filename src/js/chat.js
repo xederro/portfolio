@@ -1,16 +1,5 @@
 var msgBox = document.getElementById('msgBox');
 
-
-var firebaseConfig = {
-    apiKey: "AIzaSyBUa-l4Xod9T7Dtcyf1G4m_yEVZd5FV1Eg",
-    authDomain: "chat-99d1b.firebaseapp.com",
-    projectId: "chat-99d1b",
-    storageBucket: "chat-99d1b.appspot.com",
-    messagingSenderId: "117171095111",
-    appId: "1:117171095111:web:2bcfb306db0e54302b5362",
-    measurementId: "G-4XQBQ0FZ1R"
-};
-
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
