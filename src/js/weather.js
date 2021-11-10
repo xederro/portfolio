@@ -4,7 +4,7 @@ var presChart;
 var humChart;
 var lightChart;
 
-var site = "/?page=weather&data=";
+var site = "/?page=weather";
 
 var sortBy = "Hour";
 
@@ -13,27 +13,35 @@ function change(text){
     document.getElementById("sort").innerHTML = text;
     sortBy = text;
 
-    $.getJSON(site + sortBy.toLowerCase(), function (data) {
+    let formData = new FormData();
+    formData.append("data", sortBy.toLowerCase());
 
-      var timestamps = Array.from(data, x => x['time'])
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", site);
+    xhr.send(formData);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200){
+        let data = JSON.parse(xhr.responseText);
+        var timestamps = Array.from(data, x => x['time'])
 
-      tempChart.data.labels = timestamps;
-      tempChart.data.datasets[0].data = Array.from(data, x => x['temperature']);
+        tempChart.data.labels = timestamps;
+        tempChart.data.datasets[0].data = Array.from(data, x => x['temperature']);
 
-      presChart.data.labels = timestamps;
-      presChart.data.datasets[0].data = Array.from(data, x => x['pressure']);
+        presChart.data.labels = timestamps;
+        presChart.data.datasets[0].data = Array.from(data, x => x['pressure']);
 
-      humChart.data.labels = timestamps;
-      humChart.data.datasets[0].data = Array.from(data, x => x['humidity']);
+        humChart.data.labels = timestamps;
+        humChart.data.datasets[0].data = Array.from(data, x => x['humidity']);
 
-      lightChart.data.labels = timestamps;
-      lightChart.data.datasets[0].data = Array.from(data, x => x['light']);
+        lightChart.data.labels = timestamps;
+        lightChart.data.datasets[0].data = Array.from(data, x => x['light']);
 
-      tempChart.update();
-      presChart.update();
-      humChart.update();
-      lightChart.update();
-    })
+        tempChart.update();
+        presChart.update();
+        humChart.update();
+        lightChart.update();
+      }
+    };
   }
 }
 
@@ -44,200 +52,217 @@ function graphInit() {
     dataUpdate(true)
   }, 60000);
 
-  $.getJSON(site + sortBy.toLowerCase(), function (data) {
+  let formData = new FormData();
+  formData.append("data", sortBy.toLowerCase());
 
-    var timestamps = Array.from(data, x => x['time'])
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", site);
+  xhr.send(formData);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200){
+      let data = JSON.parse(xhr.responseText);
+        var timestamps = Array.from(data, x => x['time'])
 
-    tempChart = new Chart(ctx[0], {
-      type: 'line',
-      data: {
-        labels: timestamps,
-        datasets: [{
-          data: Array.from(data, x => x['temperature']),
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#007bff',
-          borderWidth: 1,
-          pointBackgroundColor: '#007bff'
-        }]
-      },
-      options: {
-        responsive: true,
-        interaction: {
-          intersect: false,
-          mode: 'nearest',
-        },
-        scales: {
-          y: {
-            ticks: {
-              beginAtZero: false
-            },
-            title: {
-              display: true,
-              text: '[°C]'
-            }
+        tempChart = new Chart(ctx[0], {
+          type: 'line',
+          data: {
+            labels: timestamps,
+            datasets: [{
+              data: Array.from(data, x => x['temperature']),
+              lineTension: 0,
+              backgroundColor: 'transparent',
+              borderColor: '#007bff',
+              borderWidth: 1,
+              pointBackgroundColor: '#007bff'
+            }]
           },
-          x: {
-            title: {
-              display: true,
-              text: 'Date/Hour'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          }
-        }
-      }
-    })
-
-    presChart = new Chart(ctx[1], {
-      type: 'line',
-      data: {
-        labels: timestamps,
-        datasets: [{
-          data: Array.from(data, x => x['pressure']),
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#37FF0D',
-          borderWidth: 1,
-          pointBackgroundColor: '#37FF0D'
-        }]
-      },
-      options: {
-        responsive: true,
-        interaction: {
-          intersect: false,
-          mode: 'nearest',
-        },
-        scales: {
-          y: {
-            ticks: {
-              beginAtZero: false
+          options: {
+            responsive: true,
+            interaction: {
+              intersect: false,
+              mode: 'nearest',
             },
-            title: {
-              display: true,
-              text: '[hPa]'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Date/Hour'
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          }
-        }
-      }
-    })
-
-    humChart = new Chart(ctx[2], {
-      type: 'line',
-      data: {
-        labels: timestamps,
-        datasets: [{
-          data: Array.from(data, x => x['humidity']),
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#FF19C6',
-          borderWidth: 1,
-          pointBackgroundColor: '#FF19C6'
-        }]
-      },
-      options: {
-        responsive: true,
-        interaction: {
-          intersect: false,
-          mode: 'nearest',
-        },
-        scales: {
-          y: {
-            ticks: {
-              beginAtZero: false
+            scales: {
+              y: {
+                ticks: {
+                  beginAtZero: false
+                },
+                title: {
+                  display: true,
+                  text: '[°C]'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date/Hour'
+                }
+              }
             },
-            title: {
-              display: true,
-              text: '[%]'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Date/Hour'
+            plugins: {
+              legend: {
+                display: false
+              }
             }
           }
-        },
-        plugins: {
-          legend: {
-            display: false
-          }
-        }
-      }
-    })
+        })
 
-    lightChart = new Chart(ctx[3], {
-      type: 'line',
-      data: {
-        labels: timestamps,
-        datasets: [{
-          data: Array.from(data, x => x['light']),
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#FFAB19',
-          borderWidth: 1,
-          pointBackgroundColor: '#FFAB19'
-        }]
-      },
-      options: {
-        responsive: true,
-        interaction: {
-          intersect: false,
-          mode: 'nearest',
-        },
-        scales: {
-          y: {
-            ticks: {
-              beginAtZero: false
-            },
-            title: {
-              display: true,
-              text: '[lux]'
-            }
+        presChart = new Chart(ctx[1], {
+          type: 'line',
+          data: {
+            labels: timestamps,
+            datasets: [{
+              data: Array.from(data, x => x['pressure']),
+              lineTension: 0,
+              backgroundColor: 'transparent',
+              borderColor: '#37FF0D',
+              borderWidth: 1,
+              pointBackgroundColor: '#37FF0D'
+            }]
           },
-          x: {
-            title: {
-              display: true,
-              text: 'Date/Hour'
+          options: {
+            responsive: true,
+            interaction: {
+              intersect: false,
+              mode: 'nearest',
+            },
+            scales: {
+              y: {
+                ticks: {
+                  beginAtZero: false
+                },
+                title: {
+                  display: true,
+                  text: '[hPa]'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date/Hour'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
             }
           }
-        },
-        plugins: {
-          legend: {
-            display: false
+        })
+
+        humChart = new Chart(ctx[2], {
+          type: 'line',
+          data: {
+            labels: timestamps,
+            datasets: [{
+              data: Array.from(data, x => x['humidity']),
+              lineTension: 0,
+              backgroundColor: 'transparent',
+              borderColor: '#FF19C6',
+              borderWidth: 1,
+              pointBackgroundColor: '#FF19C6'
+            }]
+          },
+          options: {
+            responsive: true,
+            interaction: {
+              intersect: false,
+              mode: 'nearest',
+            },
+            scales: {
+              y: {
+                ticks: {
+                  beginAtZero: false
+                },
+                title: {
+                  display: true,
+                  text: '[%]'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date/Hour'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
           }
-        }
-      }
-    })
-  })
+        })
+
+        lightChart = new Chart(ctx[3], {
+          type: 'line',
+          data: {
+            labels: timestamps,
+            datasets: [{
+              data: Array.from(data, x => x['light']),
+              lineTension: 0,
+              backgroundColor: 'transparent',
+              borderColor: '#FFAB19',
+              borderWidth: 1,
+              pointBackgroundColor: '#FFAB19'
+            }]
+          },
+          options: {
+            responsive: true,
+            interaction: {
+              intersect: false,
+              mode: 'nearest',
+            },
+            scales: {
+              y: {
+                ticks: {
+                  beginAtZero: false
+                },
+                title: {
+                  display: true,
+                  text: '[lux]'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Date/Hour'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        })
+    }
+  };
+
 }
 
 function dataUpdate(updateChart){
-  $.getJSON(site + 'data', function (data) {
+  let formData = new FormData();
+  formData.append("data", 'data');
 
-    document.getElementById('time').innerHTML = data[0]['time']
-    document.getElementById('temperature').innerHTML = data[0]['temperature']
-    document.getElementById('pressure').innerHTML = data[0]['pressure']
-    document.getElementById('humidity').innerHTML = data[0]['humidity']
-    document.getElementById('light').innerHTML = data[0]['light']
-    if (sortBy==="Hour" && updateChart){
-      addData(data)
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", site);
+  xhr.send(formData);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      let data = JSON.parse(xhr.responseText);
+      document.getElementById('time').innerHTML = data[0]['time']
+      document.getElementById('temperature').innerHTML = data[0]['temperature']
+      document.getElementById('pressure').innerHTML = data[0]['pressure']
+      document.getElementById('humidity').innerHTML = data[0]['humidity']
+      document.getElementById('light').innerHTML = data[0]['light']
+      if (sortBy==="Hour" && updateChart){
+        addData(data)
+      }
     }
-  })
+  }
 }
 
 function addData(data){

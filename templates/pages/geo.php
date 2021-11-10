@@ -7,7 +7,7 @@ else{
 }
 ?>
 
-<div class="container" style="width: 100%">
+<div class="container">
     <div class="container-sm">
         <div class="card mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">

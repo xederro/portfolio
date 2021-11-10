@@ -5,6 +5,7 @@ namespace src\Controller;
 
 
 use PDOException;
+use src\Model\Auth;
 use src\Model\Weather;
 use src\Utils\Request;
 use src\Utils\Response;
@@ -24,10 +25,15 @@ class PortfolioController
             'chat' => "chat",
             'geo' => "geo",
             'trends' => "trends",
-            'error' => "error"
+            'error' => "error",
+            'authLogin' => "authLogin",
+            'authRegister' => "authRegister",
+            'authUpdate' => "authUpdate",
+            'authDelete' => "authDelete",
+            'authLogout' => "authLogout",
         };
 
-        if(!is_null($params->getParam('data'))){
+        if($params->isPost()){
             $this->data($page, $params);
         }
         else{
@@ -40,13 +46,26 @@ class PortfolioController
     }
 
     private function data(string $page, Request $request){
-
         try
         {
             switch ($page){
                 case 'weather':
                     $db = new Weather(require_once("config/config.php"));
-                    return new Response($db->getData($request));
+                    return new Response($db->read($request));
+                case 'authLogin':
+                    $db = new Auth(require_once("config/config.php"));
+                    return new Response($db->read($request));
+                case 'authRegister':
+                    $db = new Auth(require_once("config/config.php"));
+                    return new Response($db->create($request));
+                case 'authUpdate':
+                    $db = new Auth(require_once("config/config.php"));
+                    return new Response($db->update($request));
+                case 'authDelete':
+                    $db = new Auth(require_once("config/config.php"));
+                    return new Response($db->delete($request));
+                case 'logout':
+                    return new Response(Auth::logout());
             }
 
         }

@@ -8,9 +8,9 @@ use src\Utils\Request;
 
 class Weather extends AbstractModel implements InterfaceModel
 {
-    public function getData(Request $request): array
+    public function read(Request $request): array
     {
-        $type = $request->getParam('data');
+        $type = $request->postParam('data');
 
         $query = match ($type) {
             "data" => "SELECT DATE_FORMAT(timestamp, '%H:%i') AS 'time', temperature, pressure, humidity, light FROM mesures ORDER BY timestamp desc LIMIT 1",
