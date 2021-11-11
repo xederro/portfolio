@@ -1077,6 +1077,12 @@ textarea.form-control {
   background-color: #cfe2ff;
   border-color: #b6d4fe;
 }
+
+.alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
 .progress {
   display: flex;
   height: 1rem;
@@ -1557,12 +1563,12 @@ textarea.form-control {
   display: flex !important;
 }
 
-.shadow {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
 .border {
   border: 1px solid #dee2e6 !important;
+}
+
+.w-75 {
+  width: 75% !important;
 }
 
 .w-100 {
@@ -1605,6 +1611,10 @@ textarea.form-control {
 
 .mt-auto {
   margin-top: auto !important;
+}
+
+.me-auto {
+  margin-right: auto !important;
 }
 
 .mb-3 {

@@ -27,8 +27,6 @@ spl_autoload_register(function(string $classNamespace){
 use src\Utils\Request;
 use src\Controller\PortfolioController;
 
-//dump($_SESSION);
-
 try {
     $params = new Request($_GET,$_POST,$_SERVER, $_COOKIE, $_SESSION ?? []);
     new PortfolioController($params);

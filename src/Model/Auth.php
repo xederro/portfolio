@@ -50,7 +50,6 @@ class Auth extends AbstractModel implements InterfaceModel
             $query = "UPDATE users SET ";
             if (!empty($request->postParam('name'))){
                 $query .= "name = '{$request->postParam('name')}' ";
-
             }
             if (!empty($request->postParam('npassword'))){
                 $password = password_hash($request->postParam('npassword'), PASSWORD_DEFAULT);
@@ -69,7 +68,7 @@ class Auth extends AbstractModel implements InterfaceModel
 
         }
         else{
-            return ['error' => 'email'];
+            return ['error' => 'pass'];
         }
     }
 
@@ -115,7 +114,7 @@ class Auth extends AbstractModel implements InterfaceModel
     {
         if($request->isPost() && $request->hasPost()){
             $query = "SELECT `id` FROM users WHERE `email` = '{$request->postParam('email')}'";
-            if(empty($this->dbConnection->query($query)->fetchAll(PDO::FETCH_ASSOC))){
+            if($this->dbConnection->query($query)->fetchAll(PDO::FETCH_ASSOC) == []){
                 return true;
             }
             else return false;

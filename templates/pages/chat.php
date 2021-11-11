@@ -8,21 +8,26 @@
         </div>
 
         <div class="card-footer">
-            <form action="javascript:sendMsg();">
+            <form action="javascript:void(0);">
+                <input type="hidden" name="id" value="<?php echo $params['session']['user']['id'] ?? '';?>">
                 <div class="mb-3">
                     <label for="nick" class="form-label">Nick:</label>
-                    <input type="text" class="form-control" id="nick" required value="<?php echo $params['session']['user']['name'] ?? '';?>">
+                    <input type="text" maxlength="50" class="form-control" id="nick" required value="<?php echo $params['session']['user']['name'] ?? '';?>">
                 </div>
                 <div class="mb-3">
                     <label for="message" class="form-label">Message:</label>
-                    <textarea class="form-control" id="message" rows="3" required></textarea>
+                    <textarea class="form-control" id="message" rows="3" maxlength="500" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Send</button>
+                <button type="button" class="btn btn-primary" onclick="sendMsg()">Send</button>
             </form>
         </div>
     </div>
 </div>
 
+
+<script>
+    let idOfUser = <?php echo $params['session']['user']['id'] ?? '""';?>;
+</script>
 <script src="/config/firestore.js"></script>
 <script src="/public/js/firebase-app.js"></script>
 <script src="/public/js/firebase-analytics.js"></script>

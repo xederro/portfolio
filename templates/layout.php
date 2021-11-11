@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Dawid Jabłonski: Portfolio of PHP developer focused on web development.">
     <link rel="manifest" href="manifest.json">
-    <title>Dawid Jabłoński - <?php echo strtolower($page) ?></title>
+    <title>Dawid Jabłoński - <?php echo $params['server']['REQUEST_URI'] == '' ? 'Portfolio' : substr($params['server']['REQUEST_URI'],1);?></title>
     <link rel="apple-touch-icon" sizes="57x57" href="/public/icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/public/icon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/public/icon/apple-icon-72x72.png">

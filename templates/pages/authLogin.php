@@ -5,7 +5,7 @@
                 <h1 class="h1">Login</h1>
             </div>
             <div class="card-body">
-                <form action="javascript:validate()" method="post">
+                <form action="javascript:void(0)" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
@@ -15,7 +15,7 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password" id="password">
                     </div>
-                    <button type="submit" class="btn btn-danger">Login</button>
+                    <button type="button" class="btn btn-danger" onclick="validate()">Login</button>
                 </form>
             </div>
         </div>

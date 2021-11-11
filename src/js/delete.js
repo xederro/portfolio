@@ -3,8 +3,11 @@ const regMail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\
 function validate() {
     let password = document.getElementById("password");
 
-    if (!password.value.length >= 8){
-        password.focus();
+    password.setCustomValidity("");
+
+    if (password.value.length < 8){
+        password.setCustomValidity("Your password is to short!");
+        password.reportValidity();
     }
     else{
         let formData = new FormData();
@@ -15,8 +18,13 @@ function validate() {
         xhr.send(formData);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200){
-                if (xhr.responseText['error'] === 'pass'){
-                    password.focus();
+                let data = JSON.parse(xhr.responseText);
+                if (data.error === 'pass'){
+                    password.setCustomValidity("Your password is wrong!");
+                    password.reportValidity();
+                }
+                else if (data.error === 'server'){
+                    alert('There is something wrong. Please try again later');
                 }
                 else{
                     document.location.href = '/';

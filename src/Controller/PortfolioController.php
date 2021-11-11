@@ -64,8 +64,6 @@ class PortfolioController
                 case 'authDelete':
                     $db = new Auth(require_once("config/config.php"));
                     return new Response($db->delete($request));
-                case 'logout':
-                    return new Response(Auth::logout());
             }
 
         }

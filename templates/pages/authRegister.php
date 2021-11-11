@@ -2,10 +2,11 @@
     <div class="container-sm">
         <div class="card mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">
-                <h1 class="h1">Login</h1>
+                <h1 class="h1">Register</h1>
             </div>
             <div class="card-body">
-                <form action="javascript:validate()" method="post">
+<!--                <form action="/index.php?page=authRegister" method="post">-->
+                <form action="javascript:void(0)" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
@@ -23,7 +24,7 @@
                         <label for="rpassword" class="form-label">Repeat Password</label>
                         <input type="password" class="form-control" name="rpassword" id="rpassword">
                     </div>
-                    <button type="submit" class="btn btn-danger">Register</button>
+                    <button type="button" class="btn btn-danger" onclick="validate()">Register</button>
                 </form>
             </div>
         </div>

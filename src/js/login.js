@@ -4,11 +4,16 @@ function validate() {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
 
+    password.setCustomValidity("");
+    email.setCustomValidity("");
+
     if(!regMail.test(email.value.toLowerCase())){
-        email.focus();
+        email.setCustomValidity("Your email is invalid!");
+        email.reportValidity();
     }
     else if(!password.value.length >= 8){
-        email.focus();
+        password.setCustomValidity("Your password is to short!");
+        password.reportValidity();
     }
     else{
         let formData = new FormData();
@@ -20,13 +25,17 @@ function validate() {
         xhr.send(formData);
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200){
-                if (xhr.responseText['error'] === 'email'){
-                    console.log(xhr.responseText)
-                    email.focus();
+                let data = JSON.parse(xhr.responseText);
+                if (data.error === 'email'){
+                    email.setCustomValidity("Your email is invalid!");
+                    email.reportValidity();
                 }
-                else if (xhr.responseText['error'] === 'pass'){
-                    console.log(xhr.responseText)
-                    password.focus();
+                else if (data.error === 'pass'){
+                    password.setCustomValidity("Your password is wrong!");
+                    password.reportValidity();
+                }
+                else if (data.error === 'server'){
+                    alert('There is something wrong. Please try again later');
                 }
                 else{
                     document.location.href = '/';

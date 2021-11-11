@@ -2,10 +2,10 @@
     <div class="container-sm">
         <div class="card mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">
-                <h1 class="h1">Login</h1>
+                <h1 class="h1">Edit</h1>
             </div>
             <div class="card-body">
-                <form action="javascript:validate()" method="post">
+                <form action="javascript:void(0)" method="post">
                     <div class="mb-3">
                         <label for="name" class="form-label">New Name</label>
                         <input type="text" class="form-control" name="name" id="name">
@@ -22,7 +22,7 @@
                         <label for="rpassword" class="form-label">Repeat New Password</label>
                         <input type="password" class="form-control" name="rpassword" id="rpassword">
                     </div>
-                    <button type="submit" class="btn btn-danger">Update</button>
+                    <button type="button" class="btn btn-danger" onclick="validate()">Update</button>
                 </form>
             </div>
         </div>

@@ -2,10 +2,10 @@
     <div class="container-sm">
         <div class="card mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">
-                <h1 class="h1">Login</h1>
+                <h1 class="h1">Delete</h1>
             </div>
             <div class="card-body">
-                <form action="javascript:validate()" method="post">
+                <form action="javascript:void(0)" method="post">
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" name="password" id="password">
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-                                    <button type="submit" class="btn btn-danger">Yes</button>
+                                    <button type="button" class="btn btn-danger" onclick="validate()">Yes</button>
                                 </div>
                             </div>
                         </div>
