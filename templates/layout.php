@@ -26,7 +26,7 @@
     <link href="/public/css/tidy.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100" onload="cookie()">
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -79,6 +79,24 @@
         </div>
     </nav>
 </header>
+
+<div class="modal fade" id="cookieBox" data-bs-backdrop="static" tabindex="-1" aria-labelledby="cookieBoxLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cookieBoxLabel">Cookies 🍪</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Allow this site to use cookies for analytic purposes only.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="noCookie()" title="Yes this will save just one cookie, to dismiss this for later.">Dismiss</button>
+                <button type="button" class="btn btn-primary" onclick="allowCookie()">Allow</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php require_once("templates/pages/$page.php"); ?>
 

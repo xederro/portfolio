@@ -6,7 +6,7 @@ module.exports = function (grunt) {
                 dest: './src/css/bulk/bulk.css'
             },
             layout: {
-                src: './src/js/bootstrap.bundle.js',
+                src: ['./src/js/bootstrap.bundle.js', './src/js/analytics.js'],
                 dest: './src/js/bulk/layout.bulk.js'
             },
             portfolio: {

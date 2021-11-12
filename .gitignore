@@ -3,6 +3,8 @@
 
 #config files
 /config/config.php
+/config/analytics.js
+/config/firestore.js
 
 #composer
 /vendor
@@ -13,3 +15,4 @@
 
 #npm
 /node_modules
+
