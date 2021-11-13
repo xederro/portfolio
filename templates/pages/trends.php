@@ -1,7 +1,24 @@
 <?php
 
-require_once("src/Utils/clean.php");
+/**
+ * outputs cleaner data
+ *
+ * @param $string
+ * @return array|string|null
+ */
+function clean($string): array|string|null
+{
+    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+}
+
+/**
+ * @throws AppException
+ */
+
 use Google\GTrends;
+use src\Exception\AppException;
 
 $options = [
     'hl' => 'en-US',
@@ -77,7 +94,8 @@ try {
             </h1></div>'
         );
     }
-} catch (Exception $e) {
-
+}
+catch (\Exception $e) {
+    throw new AppException("There was an error while trying to show trends", 408);
 }
 

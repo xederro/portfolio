@@ -5,6 +5,10 @@ namespace src\Controller;
 
 
 use PDOException;
+use src\Exception\AppException;
+use src\Exception\ConfigurationException;
+use src\Exception\NotFoundException;
+use src\Exception\StorageException;
 use src\Model\Auth;
 use src\Model\Weather;
 use src\Utils\Request;
@@ -17,6 +21,14 @@ class PortfolioController
 
     private View $view;
 
+    /**
+     * routes client to proper sites, decides if load site or return data
+     *
+     * @param Request $params
+     * @throws AppException
+     * @throws ConfigurationException
+     * @throws StorageException
+     */
     public function __construct(Request $params){
         $this->view = new View();
         $page = match ($params->getParam('page')){
@@ -41,35 +53,57 @@ class PortfolioController
         }
     }
 
+    /**
+     * loads site
+     *
+     * @param string $page
+     * @param Request $request
+     * @throws NotFoundException
+     */
     private function site(string $page, Request $request){
         $this->view->render($page, $request->getData());
     }
 
-    private function data(string $page, Request $request){
+    /**
+     * returns data
+     *
+     * @param string $page
+     * @param Request $request
+     * @throws AppException
+     * @throws ConfigurationException
+     * @throws StorageException
+     */
+    private function data(string $page, Request $request): void
+    {
         try
         {
             switch ($page){
                 case 'weather':
                     $db = new Weather(require_once("config/config.php"));
-                    return new Response($db->read($request));
+                    new Response($db->read($request));
+                    return;
                 case 'authLogin':
                     $db = new Auth(require_once("config/config.php"));
-                    return new Response($db->read($request));
+                    new Response($db->read($request));
+                    return;
                 case 'authRegister':
                     $db = new Auth(require_once("config/config.php"));
-                    return new Response($db->create($request));
+                    new Response($db->create($request));
+                    return;
                 case 'authUpdate':
                     $db = new Auth(require_once("config/config.php"));
-                    return new Response($db->update($request));
+                    new Response($db->update($request));
+                    return;
                 case 'authDelete':
                     $db = new Auth(require_once("config/config.php"));
-                    return new Response($db->delete($request));
+                    new Response($db->delete($request));
+                    return;
             }
 
         }
         catch(PDOException $e)
         {
-            echo 'Połączenie nie mogło zostać utworzone: ' . $e->getMessage();
+            throw new AppException('There was an error while trying to get data',500);
         }
     }
 }

@@ -94,8 +94,4 @@
       graphInit();
       dataUpdate(false);
     </script>
-      <form action="/index.php?page=weather" method="post">
-          <input type="text" value="data" name="data">
-          <input type="submit" value="">
-      </form>
   </div>

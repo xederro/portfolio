@@ -33,10 +33,13 @@ RewriteRule ^Register$ index.php?page=authRegister [L]
 RewriteRule ^Delete$ index.php?page=authDelete [L]
 RewriteRule ^Edit$ index.php?page=authUpdate [L]
 RewriteRule ^Logout$ index.php?page=authLogout [L]
+RewriteRule ^Error$ index.php?page=error [L]
+RewriteRule ^Error/(.*)$ index.php?page=error&error=$1 [QSA]
 
 
-ErrorDocument 400 index.php?page=error&error=400
-ErrorDocument 401 index.php?page=error&error=401
-ErrorDocument 403 index.php?page=error&error=403
-ErrorDocument 404 index.php?page=error&error=404
-ErrorDocument 500 index.php?page=error&error=500
+
+ErrorDocument 400 Error/400
+ErrorDocument 401 Error/401
+ErrorDocument 403 Error/403
+ErrorDocument 404 Error/404
+ErrorDocument 500 Error/500

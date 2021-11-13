@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+/**
+ * escape params to make them safe
+ *
+ * @param array $params
+ * @return array
+ */
 function escape(array $params): array
 {
     $clearParams = [];

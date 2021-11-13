@@ -32,5 +32,6 @@ try {
     new PortfolioController($params);
 }
 catch (Exception $e){
-    dump($e);
+    addLog($e);
+    header("Location: /Error/{$e->getCode()}");
 }
