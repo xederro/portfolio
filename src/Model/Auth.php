@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace src\Model;
 
 use PDO;
+use Ramsey\Uuid\Uuid;
 use src\Exception\StorageException;
 use src\Utils\Request;
 
@@ -19,10 +20,12 @@ class Auth extends AbstractModel implements InterfaceModel
      */
     public function create(Request $request): array
     {
+
         try {
             if($request->isPost() && $request->hasPost() && $this->checkEmail($request)){
                 $password = password_hash($request->postParam('password'), PASSWORD_DEFAULT);
-                $query = "INSERT INTO users VALUES (null, '{$request->postParam('name')}', '{$request->postParam('email')}', '$password')";
+                $id = Uuid::fromDateTime(new \DateTime());
+                $query = "INSERT INTO users VALUES ('{$id}', '{$request->postParam('name')}', '{$request->postParam('email')}', '$password')";
 
                 if($this->dbConnection->query($query)){
                     $this->read($request);
@@ -182,7 +185,7 @@ class Auth extends AbstractModel implements InterfaceModel
     {
         try {
             if($request->isPost() && $request->hasPost()){
-                $query = "SELECT `id` FROM users WHERE `email` = '{$request->postParam('email')}'";
+                $query = "SELECT `email` FROM users WHERE `email` = '{$request->postParam('email')}'";
                 if($this->dbConnection->query($query)->fetchAll(PDO::FETCH_ASSOC) == []){
                     return true;
                 }

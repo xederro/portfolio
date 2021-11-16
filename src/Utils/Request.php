@@ -47,7 +47,7 @@ class Request
      * @param null $default
      * @return mixed|null
      */
-    public function getParam(string $name, $default = null)
+    public function getParam(string $name, $default = null): mixed
     {
         return $this->get[$name] ?? $default;
     }
@@ -59,7 +59,7 @@ class Request
      * @param null $default
      * @return mixed|null
      */
-    public function sessionParam(string $name, $default = null)
+    public function sessionParam(string $name, $default = null): mixed
     {
         return $this->session[$name] ?? $default;
     }
@@ -71,7 +71,7 @@ class Request
      * @param null $default
      * @return mixed|null
      */
-    public function postParam(string $name, $default = null)
+    public function postParam(string $name, $default = null): mixed
     {
         return $this->post[$name] ?? $default;
     }
