@@ -13,7 +13,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="password" id="password" aria-describedby="passHelp">
+                        <div id="passHelp" class="form-text"><a href="/Forget"  class="text-light" rel="noopener">Forget password?</a> </div>
                     </div>
                     <button type="button" class="btn btn-danger" onclick="validate()">Login</button>
                 </form>

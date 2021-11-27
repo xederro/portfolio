@@ -33,6 +33,8 @@ RewriteRule ^Register$ index.php?page=authRegister [L]
 RewriteRule ^Delete$ index.php?page=authDelete [L]
 RewriteRule ^Edit$ index.php?page=authUpdate [L]
 RewriteRule ^Logout$ index.php?page=authLogout [L]
+RewriteRule ^Forget$ index.php?page=authForget [L]
+RewriteRule ^Reset/(.*)$ index.php?page=authReset&token=$1 [QSA]
 RewriteRule ^Error$ index.php?page=error [L]
 RewriteRule ^Error/(.*)$ index.php?page=error&error=$1 [QSA]
 

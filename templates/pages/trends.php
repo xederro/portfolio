@@ -96,6 +96,6 @@ try {
     }
 }
 catch (\Exception $e) {
-    throw new AppException("There was an error while trying to show trends", 408);
+    throw new AppException("There was an error while trying to show trends " . $e, 408);
 }
 

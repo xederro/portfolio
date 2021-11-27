@@ -41,9 +41,13 @@ module.exports = function (grunt) {
                 src:["./src/js/register.js"],
                 dest: './src/js/bulk/register.bulk.js'
             },
-            authUpdate: {
-                src:["./src/js/update.js"],
-                dest: './src/js/bulk/update.bulk.js'
+            authForget: {
+                src:["./src/js/forget.js"],
+                dest: './src/js/bulk/forget.bulk.js'
+            },
+            authReset: {
+                src:["./src/js/reset.js"],
+                dest: './src/js/bulk/reset.bulk.js'
             }
         },
         purgecss: {
@@ -70,6 +74,8 @@ module.exports = function (grunt) {
                         'https://localhost/?page=authRegister',
                         'https://localhost/?page=authLogin',
                         'https://localhost/?page=authDelete',
+                        'https://localhost/?page=authReset',
+                        'https://localhost/?page=authForget',
                         './public/js/*.min.js'
                     ],
                     safelist: [
@@ -110,6 +116,8 @@ module.exports = function (grunt) {
                     './public/js/login.min.js': './src/js/bulk/login.bulk.js',
                     './public/js/register.min.js': './src/js/bulk/register.bulk.js',
                     './public/js/update.min.js': './src/js/bulk/update.bulk.js',
+                    './public/js/reset.min.js': './src/js/bulk/reset.bulk.js',
+                    './public/js/forget.min.js': './src/js/bulk/forget.bulk.js',
                 }
             }
         }
