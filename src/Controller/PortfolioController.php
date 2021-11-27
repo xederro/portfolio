@@ -9,7 +9,7 @@ use src\Exception\AppException;
 use src\Exception\ConfigurationException;
 use src\Exception\NotFoundException;
 use src\Exception\StorageException;
-use src\Model\Auth;
+use src\Model\User;
 use src\Model\Weather;
 use src\Utils\Request;
 use src\Utils\Response;
@@ -38,11 +38,13 @@ class PortfolioController
             'geo' => "geo",
             'trends' => "trends",
             'error' => "error",
-            'authLogin' => "authLogin",
-            'authRegister' => "authRegister",
-            'authUpdate' => "authUpdate",
-            'authDelete' => "authDelete",
-            'authLogout' => "authLogout",
+            'authLogin' => "auth/login",
+            'authRegister' => "auth/register",
+            'authUpdate' => "auth/update",
+            'authDelete' => "auth/delete",
+            'authLogout' => "auth/logout",
+            'authReset' => "auth/reset",
+            'authForget' => "auth/forget",
         };
 
         if($params->isPost()){
@@ -82,28 +84,36 @@ class PortfolioController
                     $db = new Weather(require_once("config/config.php"));
                     new Response($db->read($request));
                     return;
-                case 'authLogin':
-                    $db = new Auth(require_once("config/config.php"));
-                    new Response($db->read($request));
+                case 'auth/login':
+                    $auth = new AuthController(new User(require_once("config/config.php")));
+                    new Response($auth->login($request));
                     return;
-                case 'authRegister':
-                    $db = new Auth(require_once("config/config.php"));
-                    new Response($db->create($request));
+                case 'auth/register':
+                    $auth = new AuthController(new User(require_once("config/config.php")));
+                    new Response($auth->add($request));
                     return;
-                case 'authUpdate':
-                    $db = new Auth(require_once("config/config.php"));
-                    new Response($db->update($request));
+                case 'auth/update':
+                    $auth = new AuthController(new User(require_once("config/config.php")));
+                    new Response($auth->edit($request));
                     return;
-                case 'authDelete':
-                    $db = new Auth(require_once("config/config.php"));
-                    new Response($db->delete($request));
+                case 'auth/delete':
+                    $auth = new AuthController(new User(require_once("config/config.php")));
+                    new Response($auth->remove($request));
+                    return;
+                case 'auth/forget':
+                    $auth = new AuthController(new User(require_once("config/config.php")));
+                    new Response($auth->forget($request));
+                    return;
+                case 'auth/reset':
+                    $auth = new AuthController(new User(require_once("config/config.php")));
+                    new Response($auth->reset($request));
                     return;
             }
 
         }
         catch(PDOException $e)
         {
-            throw new AppException('There was an error while trying to get data',500);
+            throw new AppException('There was an error while trying to get data ' . $e,500);
         }
     }
 }
