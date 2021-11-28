@@ -5,14 +5,13 @@
                 <h1 class="h1">Forget Password</h1>
             </div>
             <div class="card-body">
-<!--                <form action="../../../index.php" method="post">-->
                 <form action="javascript:void(0)" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="validate()">Send mail</button>
+                    <button type="submit" class="btn btn-danger" onclick="validate()">Send mail</button>
                 </form>
             </div>
         </div>

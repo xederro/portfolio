@@ -16,10 +16,11 @@ class View
      * @param array $params
      * @throws NotFoundException
      */
-    public function render(string $page, array $params): void
+    public function render(string $page, array $params, array $additional = []): void
     {
         try {
             $params = escape($params);
+            $additional = escape($additional);
             require_once self::LAYOUT;
         }
         catch (\Exception $e){

@@ -1,12 +1,3 @@
-<?php
-if(!empty($params["get"]["ip"])){
-    $geo = json_decode(file_get_contents("http://ip-api.com/json/{$_GET["ip"]}?fields=status,country,city,lat,lon,query"));
-}
-else{
-    $geo = json_decode(file_get_contents("http://ip-api.com/json/{$_SERVER['REMOTE_ADDR']}?fields=status,country,city,lat,lon,query"));
-}
-?>
-
 <div class="container">
     <div class="container-sm">
         <div class="card mt-4 w-100 p-0" style="width: 300px">
@@ -32,26 +23,26 @@ else{
     <div class="container-sm">
         <div class="card mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">
-                <h1 class="h1">Info about <?php echo !($geo->status == 'fail') ? $geo->query : ""; ?></h1>
+                <h1 class="h1">Info about <?php echo !($additional['geo']->status == 'fail') ? $additional['geo']->query : ""; ?></h1>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item list-group-item-dark">
                     <h6>
-                        Country: <?php echo !($geo->status == 'fail') ? $geo->country : ""; ?>
+                        Country: <?php echo !($additional['geo']->status == 'fail') ? $additional['geo']->country : ""; ?>
                     </h6>
                 </li>
                 <li class="list-group-item list-group-item-dark">
                     <h6>
-                        City: <?php echo !($geo->status == 'fail') ? $geo->city : ""; ?>
+                        City: <?php echo !($additional['geo']->status == 'fail') ? $additional['geo']->city : ""; ?>
                     </h6>
                 </li>
                 <li class="list-group-item list-group-item-dark">
                     <?php
-                        if($geo->status == 'fail'){
-                            echo "Something went wrong while trying to check your address: {$geo->query}";
+                        if($additional['geo']->status == 'fail'){
+                            echo "Something went wrong while trying to check your address: {$additional['geo']->query}";
                         }
                         else{
-                            echo "<iframe class='w-100' height='500px' src='https://maps.google.com/maps?q={$geo->lat},%20{$geo->lon}&t=&z=13&ie=UTF8&iwloc=&output=embed' frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe>";
+                            echo "<iframe class='w-100' height='500px' src='https://maps.google.com/maps?q={$additional['geo']->lat},%20{$additional['geo']->lon}&t=&z=13&ie=UTF8&iwloc=&output=embed' frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe>";
                         }
                     ?>
                 </li>

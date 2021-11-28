@@ -32,11 +32,10 @@ class Weather extends AbstractModel implements InterfaceModel
      * @return array
      * @throws StorageException
      */
-    public function read(Request $request): array
+    public function read(Request $request, string $query = ''): array
     {
         try {
             $type = $request->postParam('data');
-
             $query = match ($type) {
                 "data" => "SELECT DATE_FORMAT(timestamp, '%H:%i') AS 'time', temperature, pressure, humidity, light FROM mesures ORDER BY timestamp desc LIMIT 1",
                 "hour" => "SELECT DATE_FORMAT(timestamp, '%H:%i') AS 'time', temperature, pressure, humidity, light FROM mesures WHERE timestamp >= DATE_SUB(NOW(), INTERVAL '1' HOUR) ORDER BY timestamp",

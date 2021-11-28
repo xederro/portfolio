@@ -56,24 +56,27 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if($page == "geo")echo 'active'?>" href="/Geo">Geo</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "short")echo 'active'?>" href="/Short">Shortener</a>
+                    </li>
 
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <?php
                         if(empty($params['session']['user']['id'])){
                             echo "<li class='nav-item'><a class='nav-link ";
-                            if($page == 'authLogin') echo 'active';
+                            if($page == 'auth/login') echo 'active';
                             echo "' href='/Login'>Login</a></li><li class='nav-item'><a class='nav-link ";
-                            if($page == 'authRegister') echo 'active';
+                            if($page == 'auth/register') echo 'active';
                             echo "' href='/Register'>Register</a></li>";
                         }
                         else{
                             echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle dropstart" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
                             echo $params['session']['user']['name'];
                             echo '</a><ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item ';
-                            if($page == 'authUpdate') echo 'active';
+                            if($page == 'auth/update') echo 'active';
                             echo '" href="/Edit">Edit</a></li><li><a class="dropdown-item ';
-                            if($page == 'authDelete') echo 'active';
+                            if($page == 'auth/delete') echo 'active';
                             echo '" href="/Delete">Delete</a></li>';
                             echo '<li><a class="dropdown-item" href="/Logout">Logout</a></li></ul></li>';
                         }

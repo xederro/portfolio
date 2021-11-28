@@ -22,7 +22,7 @@
                         <label for="rpassword" class="form-label">Repeat New Password</label>
                         <input type="password" class="form-control" name="rpassword" id="rpassword">
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="validate()">Update</button>
+                    <button type="submit" class="btn btn-danger" onclick="validate()">Update</button>
                 </form>
             </div>
         </div>

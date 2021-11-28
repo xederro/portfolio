@@ -16,7 +16,7 @@
                         <input type="password" class="form-control" name="password" id="password" aria-describedby="passHelp">
                         <div id="passHelp" class="form-text"><a href="/Forget"  class="text-light" rel="noopener">Forget password?</a> </div>
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="validate()">Login</button>
+                    <button type="submit" class="btn btn-danger" onclick="validate()">Login</button>
                 </form>
             </div>
         </div>

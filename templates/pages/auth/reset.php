@@ -6,7 +6,7 @@
             </div>
             <div class="card-body">
                 <form action="javascript:void(0)" method="post">
-                    <button type="button" class="btn btn-danger" onclick="validate()">Reset password</button>
+                    <button type="submit" class="btn btn-danger" onclick="validate()">Reset password</button>
                 </form>
             </div>
         </div>

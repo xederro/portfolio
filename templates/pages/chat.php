@@ -18,7 +18,7 @@
                     <label for="message" class="form-label">Message:</label>
                     <textarea class="form-control" id="message" rows="3" maxlength="500" required></textarea>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="sendMsg()">Send</button>
+                <button type="submit" class="btn btn-primary" onclick="sendMsg()">Send</button>
             </form>
         </div>
     </div>

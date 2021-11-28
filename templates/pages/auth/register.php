@@ -5,7 +5,6 @@
                 <h1 class="h1">Register</h1>
             </div>
             <div class="card-body">
-<!--                <form action="/index.php?page=authRegister" method="post">-->
                 <form action="javascript:void(0)" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
@@ -24,7 +23,7 @@
                         <label for="rpassword" class="form-label">Repeat Password</label>
                         <input type="password" class="form-control" name="rpassword" id="rpassword">
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="validate()">Register</button>
+                    <button type="submit" class="btn btn-danger" onclick="validate()">Register</button>
                 </form>
             </div>
         </div>

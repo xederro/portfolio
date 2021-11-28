@@ -9,11 +9,13 @@ use src\Exception\AppException;
 use src\Exception\ConfigurationException;
 use src\Exception\NotFoundException;
 use src\Exception\StorageException;
+use src\Model\Link;
 use src\Model\User;
 use src\Model\Weather;
 use src\Utils\Request;
 use src\Utils\Response;
 use src\View;
+use Google\GTrends;
 
 class PortfolioController
 {
@@ -37,6 +39,8 @@ class PortfolioController
             'chat' => "chat",
             'geo' => "geo",
             'trends' => "trends",
+            'short' => "short",
+            'deleteShort' => "deleteShort",
             'error' => "error",
             'authLogin' => "auth/login",
             'authRegister' => "auth/register",
@@ -63,7 +67,55 @@ class PortfolioController
      * @throws NotFoundException
      */
     private function site(string $page, Request $request){
-        $this->view->render($page, $request->getData());
+        switch ($page){
+            case 'short':
+                if(!empty($request->getParam('id'))){
+                    $db = new Link(require_once("config/config.php"));
+                    $long = ($db->readOne($request->getParam('id')))[0]['long'];
+                    header("Location: $long");
+                }
+                elseif(empty($request->sessionParam('user')['id'])){
+                    header("Location: /Login");
+                }
+                else{
+                    $db = new Link(require_once("config/config.php"));
+                    $this->view->render($page, $request->getData(), ['links' => $db->read($request->sessionParam('user')['id'])]);
+                }
+                break;
+            case 'geo':
+                if(!empty($request->getParam("ip"))){
+                    $geo = json_decode(file_get_contents("http://ip-api.com/json/{$_GET["ip"]}?fields=status,country,city,lat,lon,query"));
+                }
+                else{
+                    $geo = json_decode(file_get_contents("http://ip-api.com/json/{$_SERVER['REMOTE_ADDR']}?fields=status,country,city,lat,lon,query"));
+                }
+                $this->view->render($page, $request->getData(), ['geo' => $geo]);
+                break;
+            case 'trends':
+
+                /**
+                 * @throws AppException
+                 */
+
+                $options = [
+                    'hl' => 'en-US',
+                    'tz' => 360,
+                    'geo' => 'US',
+                ];
+                try {
+                    $gt = new GTrends($options);
+                    $this->view->render($page, $request->getData(), ['trends' => $gt->getDailySearchTrends()['default']['trendingSearchesDays']]);
+                }
+                catch (\Exception $e) {
+                    throw new AppException("There was an error while trying to show trends " . $e, 408);
+                }
+                break;
+            default:
+                $this->view->render($page, $request->getData());
+                break;
+
+        }
+
     }
 
     /**
@@ -83,6 +135,20 @@ class PortfolioController
                 case 'weather':
                     $db = new Weather(require_once("config/config.php"));
                     new Response($db->read($request));
+                    return;
+                case 'short':
+                    $db = new Link(require_once("config/config.php"));
+                    new Response($db->create($request));
+                    return;
+                case 'deleteShort':
+                    $auth = new AuthController(new User(require("config/config.php")));
+                    if ($auth->auth($request)){
+                        $db = new Link(require("config/config.php"));
+                        new Response($db->delete($request));
+                    }
+                    else{
+                        new Response(['error' => 'auth']);
+                    }
                     return;
                 case 'auth/login':
                     $auth = new AuthController(new User(require_once("config/config.php")));
