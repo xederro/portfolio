@@ -12,7 +12,6 @@ if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
     exit;
 }
 
-
 require_once("src/Utils/debug.php");
 require_once("src/Utils/escape.php");
 require_once("src/Utils/addLog.php");
@@ -33,5 +32,5 @@ try {
 }
 catch (Exception $e){
     addLog($e);
-    header("Location: /Error/{$e->getCode()}");
+//    header("Location: /Error/{$e->getCode()}");
 }

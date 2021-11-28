@@ -15,7 +15,8 @@
         "ext-json": "*",
         "grpc/grpc": "^1.39",
         "google/protobuf": "^3.17",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "ramsey/uuid": "^4.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",

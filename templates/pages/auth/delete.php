@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-                                    <button type="button" class="btn btn-danger" onclick="validate()">Yes</button>
+                                    <button type="submit" class="btn btn-danger" onclick="validate()">Yes</button>
                                 </div>
                             </div>
                         </div>

@@ -41,9 +41,17 @@ module.exports = function (grunt) {
                 src:["./src/js/register.js"],
                 dest: './src/js/bulk/register.bulk.js'
             },
-            authUpdate: {
-                src:["./src/js/update.js"],
-                dest: './src/js/bulk/update.bulk.js'
+            authForget: {
+                src:["./src/js/forget.js"],
+                dest: './src/js/bulk/forget.bulk.js'
+            },
+            authReset: {
+                src:["./src/js/reset.js"],
+                dest: './src/js/bulk/reset.bulk.js'
+            },
+            short: {
+                src:["./src/js/short.js"],
+                dest: './src/js/bulk/short.bulk.js'
             }
         },
         purgecss: {
@@ -66,10 +74,13 @@ module.exports = function (grunt) {
                         'https://localhost/?page=weather',
                         'https://localhost/?page=chat',
                         'https://localhost/?page=geo',
+                        'https://localhost/?page=short',
                         'https://localhost/?page=authUpdate',
                         'https://localhost/?page=authRegister',
                         'https://localhost/?page=authLogin',
                         'https://localhost/?page=authDelete',
+                        'https://localhost/?page=authReset',
+                        'https://localhost/?page=authForget',
                         './public/js/*.min.js'
                     ],
                     safelist: [
@@ -106,10 +117,13 @@ module.exports = function (grunt) {
                     './public/js/chat.min.js': './src/js/bulk/chat.bulk.js',
                     './public/js/trends.min.js': './src/js/bulk/trends.bulk.js',
                     './public/js/geo.min.js': './src/js/bulk/geo.bulk.js',
+                    './public/js/short.min.js': './src/js/bulk/short.bulk.js',
                     './public/js/delete.min.js': './src/js/bulk/delete.bulk.js',
                     './public/js/login.min.js': './src/js/bulk/login.bulk.js',
                     './public/js/register.min.js': './src/js/bulk/register.bulk.js',
                     './public/js/update.min.js': './src/js/bulk/update.bulk.js',
+                    './public/js/reset.min.js': './src/js/bulk/reset.bulk.js',
+                    './public/js/forget.min.js': './src/js/bulk/forget.bulk.js',
                 }
             }
         }

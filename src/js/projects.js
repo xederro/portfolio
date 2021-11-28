@@ -105,5 +105,30 @@ const projects = [
                 fontColor: "#000000"
             }
         ]
+    },
+    {
+        projectName: 'Link Shortener',
+        lang: 'PHP',
+        langColor: '#4F5D95',
+        description: 'Let your long link be small and easy to remember',
+        link: 'Short',
+        technologies: [
+            {
+                name: 'PHP',
+                color: '#4F5D95',
+                fontColor: ""
+
+            },
+            {
+                name: 'Bootstrap',
+                color: '#563d7c',
+                fontColor: ""
+            },
+            {
+                name: 'JavaScript',
+                color: '#f1e05a',
+                fontColor: "#000000"
+            }
+        ]
     }
   ]

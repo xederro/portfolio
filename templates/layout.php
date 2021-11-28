@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Dawid Jabłonski: Portfolio of PHP developer focused on web development.">
     <link rel="manifest" href="manifest.json">
-    <title>Dawid Jabłoński - <?php echo $params['server']['REQUEST_URI'] == '' ? 'Portfolio' : substr($params['server']['REQUEST_URI'],1);?></title>
+    <title>Dawid Jabłoński  <?php echo $params['server']['REQUEST_URI'] == '' ? 'Portfolio' : substr($params['server']['REQUEST_URI'],1);?></title>
     <link rel="apple-touch-icon" sizes="57x57" href="/public/icon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/public/icon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/public/icon/apple-icon-72x72.png">
@@ -23,6 +23,11 @@
     <meta name="msapplication-TileColor" content="#000000">
     <meta name="msapplication-TileImage" content="/public/icon/ms-icon-144x144.png">
     <meta name="theme-color" content="#000000">
+    <meta property="og:title" content="Dawid Jabłoński - A PHP developer / Back-end Developer" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/public/img/og.jpg" />
+    <meta property="og:url" content="https://www.dawid.j.pl" />
     <link href="/public/css/tidy.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
@@ -51,24 +56,27 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if($page == "geo")echo 'active'?>" href="/Geo">Geo</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if($page == "short")echo 'active'?>" href="/Short">Shortener</a>
+                    </li>
 
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <?php
                         if(empty($params['session']['user']['id'])){
                             echo "<li class='nav-item'><a class='nav-link ";
-                            if($page == 'authLogin') echo 'active';
+                            if($page == 'auth/login') echo 'active';
                             echo "' href='/Login'>Login</a></li><li class='nav-item'><a class='nav-link ";
-                            if($page == 'authRegister') echo 'active';
+                            if($page == 'auth/register') echo 'active';
                             echo "' href='/Register'>Register</a></li>";
                         }
                         else{
                             echo '<li class="nav-item dropdown"><a class="nav-link dropdown-toggle dropstart" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
                             echo $params['session']['user']['name'];
                             echo '</a><ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink"><li><a class="dropdown-item ';
-                            if($page == 'authUpdate') echo 'active';
+                            if($page == 'auth/update') echo 'active';
                             echo '" href="/Edit">Edit</a></li><li><a class="dropdown-item ';
-                            if($page == 'authDelete') echo 'active';
+                            if($page == 'auth/delete') echo 'active';
                             echo '" href="/Delete">Delete</a></li>';
                             echo '<li><a class="dropdown-item" href="/Logout">Logout</a></li></ul></li>';
                         }

@@ -13,23 +13,7 @@ function clean($string): array|string|null
     return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 }
 
-/**
- * @throws AppException
- */
-
-use Google\GTrends;
-use src\Exception\AppException;
-
-$options = [
-    'hl' => 'en-US',
-    'tz' => 360,
-    'geo' => 'US',
-];
-try {
-    $gt = new GTrends($options);
-
-    $trends = $gt->getDailySearchTrends()['default']['trendingSearchesDays'];
-    foreach ($trends as $trend){
+    foreach ($additional['trends'] as $trend){
         echo (
             '<div class="container-fluid">
               <h2>'
@@ -94,8 +78,4 @@ try {
             </h1></div>'
         );
     }
-}
-catch (\Exception $e) {
-    throw new AppException("There was an error while trying to show trends", 408);
-}
 

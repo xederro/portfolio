@@ -17,23 +17,21 @@ function validate() {
         password.setCustomValidity("Your password is required!");
         password.reportValidity();
     }
-    else if(npassword.value !== 0 && rpassword.value.length !== 0){
-        if(npassword.value.length < 8) {
-            npassword.setCustomValidity("Your password is to short!");
-            npassword.reportValidity();
-        }
-        else if(!/[0-9]/.test(npassword.value)) {
-            npassword.setCustomValidity("Your password should contain at least one digit!");
-            npassword.reportValidity();
-        }
-        else if(!/[a-z]/.test(npassword.value)) {
-            npassword.setCustomValidity("Your password should contain at least one lower case!");
-            npassword.reportValidity();
-        }
-        else if(!/[A-Z]/.test(npassword.value)) {
-            npassword.setCustomValidity("Your password should contain at least one upper case!");
-            npassword.reportValidity();
-        }
+    else if(npassword.value !== 0 && rpassword.value.length !== 0 && npassword.value.length < 8) {
+        npassword.setCustomValidity("Your password is to short!");
+        npassword.reportValidity();
+    }
+    else if(npassword.value !== 0 && rpassword.value.length !== 0 && !/[0-9]/.test(npassword.value)) {
+        npassword.setCustomValidity("Your password should contain at least one digit!");
+        npassword.reportValidity();
+    }
+    else if(npassword.value !== 0 && rpassword.value.length !== 0 && !/[a-z]/.test(npassword.value)) {
+        npassword.setCustomValidity("Your password should contain at least one lower case!");
+        npassword.reportValidity();
+    }
+    else if(npassword.value !== 0 && rpassword.value.length !== 0 && !/[A-Z]/.test(npassword.value)) {
+        npassword.setCustomValidity("Your password should contain at least one upper case!");
+        npassword.reportValidity();
     }
     else{
         let formData = new FormData();
