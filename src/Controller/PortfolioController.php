@@ -71,8 +71,14 @@ class PortfolioController
             case 'short':
                 if(!empty($request->getParam('id'))){
                     $db = new Link(require_once("config/config.php"));
-                    $long = ($db->readOne($request->getParam('id')))[0]['long'];
-                    header("Location: $long");
+                    $output = $db->readOne($request->getParam('id'));
+                    if ($output != []){
+                        $long = $output[0]['long'];
+                        header("Location: $long");
+                    }
+                    else{
+                        header("Location: /Error/404");
+                    }
                 }
                 elseif(empty($request->sessionParam('user')['id'])){
                     header("Location: /Login");

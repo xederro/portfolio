@@ -24,3 +24,4 @@ Portfolio and projects in it ware build with:
    - Simple Chat
    - Latest trends in USA
    - IP address localization
+   - Link shortener

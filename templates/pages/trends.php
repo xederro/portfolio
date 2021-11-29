@@ -33,11 +33,11 @@ function clean($string): array|string|null
                 .clean($search['title']['query'])
                 .'">
                     <img src="'
-                .$search['image']['imageUrl']
+                .($search['image']['imageUrl']??"")
                 .'" class="rounded" width="100px" alt="'
-                .$search['image']['source']
+                .($search['image']['source']??"")
                 .'" title="'
-                .$search['image']['source']
+                .($search['image']['source']??"")
                 .'">
                         <span class="my-4 ml-5 h3">'
                 .$search['title']['query']

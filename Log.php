@@ -280,4 +280,8 @@ Stack trace:
 #0 C:\xampp\htdocs\portfolio\src\Controller\PortfolioController.php(146): src\Model\AbstractModel->__construct(NULL)
 #1 C:\xampp\htdocs\portfolio\src\Controller\PortfolioController.php(55): src\Controller\PortfolioController->data('deleteShort', Object(src\Utils\Request))
 #2 C:\xampp\htdocs\portfolio\index.php(31): src\Controller\PortfolioController->__construct(Object(src\Utils\Request))
-#3 {main}/n
+#3 {main}/nsrc\Exception\AppException: mesage in C:\xampp\htdocs\portfolio\src\Controller\PortfolioController.php:80
+Stack trace:
+#0 C:\xampp\htdocs\portfolio\src\Controller\PortfolioController.php(58): src\Controller\PortfolioController->site('short', Object(src\Utils\Request))
+#1 C:\xampp\htdocs\portfolio\index.php(31): src\Controller\PortfolioController->__construct(Object(src\Utils\Request))
+#2 {main}/n

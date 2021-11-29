@@ -11,6 +11,10 @@ function validate() {
         long.setCustomValidity("Your link is invalid!");
         long.reportValidity();
     }
+    if(short.value.length > 20 || short.value.length <= 3){
+        short.setCustomValidity("Your short link has wrong count of letters!");
+        short.reportValidity();
+    }
     else{
         let formData = new FormData();
         formData.append("short", short.value);
