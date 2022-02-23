@@ -1,6 +1,6 @@
 <div class="container" style="width: 100%">
     <div class="container-sm">
-        <div class="card mt-4 w-100 p-0" style="width: 300px">
+        <div class="card mt-4 w-100 p-0 bg-dark text-light" style="width: 300px">
             <div class="card-header">
                 <h1 class="h1">Delete</h1>
             </div>
@@ -15,7 +15,7 @@
                         Delete
                     </button>
 
-                    <div class="modal fade" id="alert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade text-light" id="alert" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content bg-dark">
                                 <div class="modal-header">

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade text-light" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content bg-dark">
             <div class="modal-body">
@@ -17,7 +17,7 @@
 
 <div class="container">
     <div class="container-sm">
-        <div class="card mt-4 w-100 p-0" style="width: 300px">
+        <div class="card mt-4 w-100 p-0 bg-dark text-light" style="width: 300px">
             <div class="card-header">
                 <h1 class="h1">Shorten your link</h1>
             </div>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace src\Controller;
 
 
+use mysql_xdevapi\Exception;
 use PDOException;
 use src\Exception\AppException;
 use src\Exception\ConfigurationException;
@@ -35,6 +36,7 @@ class PortfolioController
         $this->view = new View();
         $page = match ($params->getParam('page')){
             default => self::PAGE,
+            'contact' => "contact",
             'weather' => "weather",
             'chat' => "chat",
             'geo' => "geo",
@@ -138,6 +140,15 @@ class PortfolioController
         try
         {
             switch ($page){
+                case 'contact':
+                    try {
+                        mail("xederro@gmail.com","Contact Form " . $request->postParam('name') . " Mail: " . $request->postParam('email'), $request->postParam('message'), ['From'=>'admin@dawid.j.pl','Reply-To'=>$request->postParam('email'), 'Content-type'=>'text/html', 'charset'=>'utf-8']);
+                        new Response([]);
+                    }
+                    catch (\Exception $e){
+                        new Response(['server'=>$e]);
+                    }
+                    return;
                 case 'weather':
                     $db = new Weather(require_once("config/config.php"));
                     new Response($db->read($request));

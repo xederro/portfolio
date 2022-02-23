@@ -23,6 +23,7 @@ RewriteCond %{DOCUMENT_ROOT}/$1 -f
 RewriteRule ^[^/]+/([^.]+\.(?:js|css|jpe?g|png|gif))$ /$1 [L,R=301,NC]
 RewriteBase /
 RewriteRule ^Portfolio$ index.php [L]
+RewriteRule ^Contact$ index.php?page=contact [L]
 RewriteRule ^Weather$ index.php?page=weather [L]
 RewriteRule ^Chat$ index.php?page=chat [L]
 RewriteRule ^Trends$ index.php?page=trends [L]

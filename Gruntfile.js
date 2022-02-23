@@ -13,7 +13,11 @@ module.exports = function (grunt) {
                 src:["./src/js/ageCalculator.js", "./src/js/typeWriter.js","./src/js/projects.js","./src/js/cardGenerator.js"],
                 dest: './src/js/bulk/portfolio.bulk.js'
             },
-            weather: {
+            contact: {
+                src:["./src/js/contact.js"],
+                dest: './src/js/bulk/contact.bulk.js'
+            }
+            ,weather: {
                 src:["./src/js/chart.js","./src/js/weather.js"],
                 dest: './src/js/bulk/weather.bulk.js'
             },
@@ -52,6 +56,26 @@ module.exports = function (grunt) {
             short: {
                 src:["./src/js/short.js"],
                 dest: './src/js/bulk/short.bulk.js'
+            }
+        },
+        uglify: {
+            js: {
+                files: {
+                    './public/js/layout.min.js': './src/js/bulk/layout.bulk.js',
+                    './public/js/portfolio.min.js': './src/js/bulk/portfolio.bulk.js',
+                    './public/js/contact.min.js': './src/js/bulk/contact.bulk.js',
+                    './public/js/weather.min.js': './src/js/bulk/weather.bulk.js',
+                    './public/js/chat.min.js': './src/js/bulk/chat.bulk.js',
+                    './public/js/trends.min.js': './src/js/bulk/trends.bulk.js',
+                    './public/js/geo.min.js': './src/js/bulk/geo.bulk.js',
+                    './public/js/short.min.js': './src/js/bulk/short.bulk.js',
+                    './public/js/delete.min.js': './src/js/bulk/delete.bulk.js',
+                    './public/js/login.min.js': './src/js/bulk/login.bulk.js',
+                    './public/js/register.min.js': './src/js/bulk/register.bulk.js',
+                    './public/js/update.min.js': './src/js/bulk/update.bulk.js',
+                    './public/js/reset.min.js': './src/js/bulk/reset.bulk.js',
+                    './public/js/forget.min.js': './src/js/bulk/forget.bulk.js',
+                }
             }
         },
         purgecss: {
@@ -108,25 +132,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        uglify: {
-            js: {
-                files: {
-                    './public/js/layout.min.js': './src/js/bulk/layout.bulk.js',
-                    './public/js/portfolio.min.js': './src/js/bulk/portfolio.bulk.js',
-                    './public/js/weather.min.js': './src/js/bulk/weather.bulk.js',
-                    './public/js/chat.min.js': './src/js/bulk/chat.bulk.js',
-                    './public/js/trends.min.js': './src/js/bulk/trends.bulk.js',
-                    './public/js/geo.min.js': './src/js/bulk/geo.bulk.js',
-                    './public/js/short.min.js': './src/js/bulk/short.bulk.js',
-                    './public/js/delete.min.js': './src/js/bulk/delete.bulk.js',
-                    './public/js/login.min.js': './src/js/bulk/login.bulk.js',
-                    './public/js/register.min.js': './src/js/bulk/register.bulk.js',
-                    './public/js/update.min.js': './src/js/bulk/update.bulk.js',
-                    './public/js/reset.min.js': './src/js/bulk/reset.bulk.js',
-                    './public/js/forget.min.js': './src/js/bulk/forget.bulk.js',
-                }
-            }
-        }
     });
 
     // Load the plugins
@@ -136,5 +141,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Default tasks
-    grunt.registerTask('default', ['concat','purgecss', 'cssmin', 'uglify']);
+    grunt.registerTask('default', ['concat', 'uglify','purgecss', 'cssmin']);
 };

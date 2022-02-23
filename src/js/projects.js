@@ -130,5 +130,58 @@ const projects = [
                 fontColor: "#000000"
             }
         ]
+    },
+    {
+        projectName: 'Photo Editor',
+        lang: 'JavaScript',
+        langColor: '#EAD40D',
+        description: 'Simple photo editor',
+        link: 'https://github.com/xederro/photo-editor',
+        technologies: [
+            {
+                name: 'Vue',
+                color: '#41b883',
+                fontColor: ""
+            },
+            {
+                name: 'Bootstrap',
+                color: '#563d7c',
+                fontColor: ""
+            },
+            {
+                name: 'Electron',
+                color: '#f1e05a',
+                fontColor: "#000000"
+            }
+        ]
+    },
+    {
+        projectName: 'Invoice Generator',
+        lang: 'JavaScript',
+        langColor: '#EAD40D',
+        description: 'Invoice Management System',
+        link: 'https://github.com/xederro/Invoice_Generator',
+        technologies: [
+            {
+                name: 'Vue',
+                color: '#41b883',
+                fontColor: ""
+            },
+            {
+                name: 'Bootstrap',
+                color: '#563d7c',
+                fontColor: ""
+            },
+            {
+                name: 'Electron',
+                color: '#f1e05a',
+                fontColor: "#000000"
+            },
+            {
+                name: 'Nedb',
+                color: '#f1e05a',
+                fontColor: "#000000"
+            }
+        ]
     }
   ]

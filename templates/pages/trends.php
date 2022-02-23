@@ -24,7 +24,7 @@ function clean($string): array|string|null
         foreach ($trend['trendingSearches'] as $search){
             echo('
                 <div class="row">
-                   <div class="card col" style="width: 18rem;">
+                   <div class="card col text-light bg-dark" style="width: 18rem;">
                       <div class="card-header">
                                             
                     <a class="link-light text-decoration-none" style="width: 100%; height: 100%" type="button" data-bs-toggle="collapse" data-bs-target="#'
@@ -52,7 +52,7 @@ function clean($string): array|string|null
             foreach ($search['articles'] as $article){
                 echo('<a class="link-light" href="'
                     .$article['url']
-                    .'"><li class="list-group-item list-group-item-dark">'
+                    .'"><li class="list-group-item list-group-item-dark bg-dark text-light">'
                     .$article['title']
                     .'<br><small>'
                     .$article['source']

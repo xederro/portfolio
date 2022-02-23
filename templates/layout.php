@@ -31,7 +31,7 @@
     <link href="/public/css/tidy.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
-<body class="d-flex flex-column min-vh-100" onload="cookie()">
+<body class="d-flex flex-column min-vh-100 bg-dark" onload="cookie()">
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -44,21 +44,50 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if($page == "portfolio")echo 'active'?>" href="/Portfolio">Portfolio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if($page == "weather")echo 'active'?>" href="/Weather">Weather</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item <?php if($page == "weather")echo 'active'?>" href="/Weather">Weather</a></li>
+                            <li><a class="dropdown-item <?php if($page == "chat")echo 'active'?>" href="/Chat">Chat</a></li>
+                            <li><a class="dropdown-item <?php if($page == "trends")echo 'active'?>" href="/Trends">Trends</a></li>
+                            <li><a class="dropdown-item <?php if($page == "geo")echo 'active'?>" href="/Geo">Geo</a></li>
+                            <li><a class="dropdown-item <?php if($page == "short")echo 'active'?>" href="/Short">Shortener</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if($page == "chat")echo 'active'?>" href="/Chat">Chat</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Contact
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/Contact">
+                                    Contact Form
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="https://github.com/xederro">
+                                    <i class="bi bi-github"></i> Github
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="https://linkedin.com/in/dawidjablonski">
+                                    <i class="bi bi-linkedin"></i> LinkedIn
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="mailto:xederro@gmail.com">
+                                    <i class="bi bi-envelope"></i> Email
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if($page == "trends")echo 'active'?>" href="/Trends">Trends</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if($page == "geo")echo 'active'?>" href="/Geo">Geo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php if($page == "short")echo 'active'?>" href="/Short">Shortener</a>
-                    </li>
+
+
+
+
 
                 </ul>
                 <ul class="navbar-nav ms-auto">
@@ -88,7 +117,7 @@
     </nav>
 </header>
 
-<div class="modal fade" id="cookieBox" data-bs-backdrop="static" tabindex="-1" aria-labelledby="cookieBoxLabel" aria-hidden="true">
+<div class="modal fade text-light" id="cookieBox" data-bs-backdrop="static" tabindex="-1" aria-labelledby="cookieBoxLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content bg-dark">
             <div class="modal-header">
@@ -108,10 +137,8 @@
 
 <?php require_once("templates/pages/$page.php"); ?>
 
-<footer class="bg-dark navbar navbar-dark mt-auto">
-    <div class="container-fluid">
-        <p class="w-100 text-center">&copy;<span id="year">20XX</span> - Portfolio -  Dawid Jabłoński</p>
-    </div>
+<footer class="bg-dark navbar navbar-dark mt-auto text-light">
+    <p class="w-100 text-center">&copy;<span id="year">20XX</span> - Portfolio -  Dawid Jabłoński</p>
 </footer>
 <script src="/public/js/layout.min.js"></script>
 <script> document.getElementById("year").innerHTML = (new Date()).getFullYear()</script>

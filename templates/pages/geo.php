@@ -1,6 +1,6 @@
 <div class="container">
     <div class="container-sm">
-        <div class="card mt-4 w-100 p-0" style="width: 300px">
+        <div class="card bg-dark text-light mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">
                 <h1 class="h1">Other IP</h1>
             </div>
@@ -21,22 +21,22 @@
 
 
     <div class="container-sm">
-        <div class="card mt-4 w-100 p-0" style="width: 300px">
+        <div class="card bg-dark text-light mt-4 w-100 p-0" style="width: 300px">
             <div class="card-header">
                 <h1 class="h1">Info about <?php echo !($additional['geo']->status == 'fail') ? $additional['geo']->query : ""; ?></h1>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-item-dark">
+                <li class="list-group-item list-group-item-dark bg-dark text-light">
                     <h6>
                         Country: <?php echo !($additional['geo']->status == 'fail') ? $additional['geo']->country : ""; ?>
                     </h6>
                 </li>
-                <li class="list-group-item list-group-item-dark">
+                <li class="list-group-item list-group-item-dark bg-dark text-light">
                     <h6>
                         City: <?php echo !($additional['geo']->status == 'fail') ? $additional['geo']->city : ""; ?>
                     </h6>
                 </li>
-                <li class="list-group-item list-group-item-dark">
+                <li class="list-group-item list-group-item-dark bg-dark text-light">
                     <?php
                         if($additional['geo']->status == 'fail'){
                             echo "Something went wrong while trying to check your address: {$additional['geo']->query}";
