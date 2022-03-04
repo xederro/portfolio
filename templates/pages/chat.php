@@ -30,7 +30,6 @@
 </script>
 <script src="/config/firestore.js"></script>
 <script src="/public/js/firebase-app.js"></script>
-<script src="/public/js/firebase-analytics.js"></script>
 <script src="/public/js/firebase-auth.js"></script>
 <script src="/public/js/firebase-firestore.js"></script>
 <script src="/public/js/chat.min.js"></script>

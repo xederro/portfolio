@@ -1,12 +1,9 @@
 var msgBox = document.getElementById('msgBox');
 
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 firebase.auth().signInAnonymously()
-    .then(() => {
-        // Signed in..
-    })
+    .then(() => {})
     .catch((error) => {
         console.error('Error while anonymous auth', error);
     });
@@ -34,6 +31,8 @@ query.onSnapshot(function(snapshot) {
                 classes = 'alert-primary me-auto';
             }
 
+            let data = message.timestamp.toDate().toISOString().split('T')
+
             msgBox.innerHTML +=
                 '<div class="m-2 p-2 w-75 '
                 + classes
@@ -42,7 +41,9 @@ query.onSnapshot(function(snapshot) {
                 + '"><b style="font-size: 1rem">'
                 + message.nick
                 + ' at '
-                + new Date(message.timestamp.toDate()).toUTCString()
+                + data[0]
+                + ' '
+                + data[1].substring(0,5)
                 +' </b><hr class="m-0 p-0">'
                 + message.message
                 + '</div>';
@@ -56,9 +57,9 @@ query.onSnapshot(function(snapshot) {
 
 
 function sendMsg() {
-    var form = document.forms[0];
-    var message = form[2];
-    var nick = form[1];
+    let form = document.forms[0];
+    let message = form[2];
+    let nick = form[1];
     var id = form[0];
 
 
@@ -73,11 +74,8 @@ function sendMsg() {
         message.setCustomValidity('Your message is too long!');
         message.reportValidity();
     }
-    else if(isNaN(id.value)){
-        alert('There is something wrong. Please try again later');
-    }
     else {
-        var data ={
+        let data ={
             id: id.value,
             nick: nick.value,
             message: message.value,
